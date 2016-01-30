@@ -80,6 +80,9 @@ public class Player : MonoBehaviour {
             Destroy(gameObject);
            
         } 
-
+		if (col.gameObject.tag == "Finish") {
+			_GM.winState = true;
+			_GM.gameOver = true;
+		}
     }
 }
