@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Minotaur : MonoBehaviour {
+public class MinotaurFollower : MonoBehaviour {
 
 	public AudioClip _cantMove;
 	public AudioClip _Footsteps;

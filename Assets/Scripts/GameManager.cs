@@ -6,10 +6,10 @@ public class GameManager : MonoBehaviour {
 	public Maze mazePrefab;
 
     public Player playerPrefab;
-	public Minotaur minotaurPrefab;
+	public MinotaurFollower minotaurPrefab;
 
     private Player playerInstance;
-	private Minotaur minotaurInstance;
+	private MinotaurFollower minotaurInstance;
 
 	private Maze mazeInstance;
 
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
         playerInstance = Instantiate(playerPrefab) as Player;
         playerInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
 
-		minotaurInstance = Instantiate(minotaurPrefab) as Minotaur;
+		minotaurInstance = Instantiate(minotaurPrefab) as MinotaurFollower;
 		minotaurInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
 	}
 
