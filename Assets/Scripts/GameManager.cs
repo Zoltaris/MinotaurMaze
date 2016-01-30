@@ -26,11 +26,10 @@ public class GameManager : MonoBehaviour {
 	private IEnumerator BeginGame () {
 		mazeInstance = Instantiate(mazePrefab) as Maze;
 		yield return StartCoroutine(mazeInstance.Generate());
-        playerInstance = Instantiate(playerPrefab) as Player;
-        playerInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
+        SpawnPlayer();
+        SpawnMinotaur();
 
-		minotaurInstance = Instantiate(minotaurPrefab) as MinotaurFollower;
-		minotaurInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
+		
 	}
 
 	private void RestartGame () {
@@ -46,4 +45,18 @@ public class GameManager : MonoBehaviour {
 		}
         StartCoroutine(BeginGame());
 	}
+
+    void SpawnPlayer ()
+    {
+        playerInstance = Instantiate(playerPrefab) as Player;
+        playerInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
+
+
+    }
+
+    void SpawnMinotaur()
+    {
+        minotaurInstance = Instantiate(minotaurPrefab) as MinotaurFollower;
+        minotaurInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
+    }
 }
