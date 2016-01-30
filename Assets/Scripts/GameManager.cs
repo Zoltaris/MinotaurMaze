@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
 		yield return StartCoroutine(mazeInstance.Generate());
         playerInstance = Instantiate(playerPrefab) as Player;
         playerInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
+
 		minotaurInstance = Instantiate(minotaurPrefab) as Minotaur;
 		minotaurInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
 	}
