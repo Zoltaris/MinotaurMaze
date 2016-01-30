@@ -8,6 +8,10 @@ public class Player : MonoBehaviour {
     public AudioClip _cantMove;
     public AudioClip _Footsteps;
 
+    public Lives _lives;
+
+    public bool alive = true;
+
     AudioSource audio;
 
     private MazeCell currentCell;
@@ -39,9 +43,10 @@ public class Player : MonoBehaviour {
             audio.PlayOneShot(_cantMove, 1f);
         }    
         }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             Move(MazeDirection.North);
@@ -59,7 +64,22 @@ public class Player : MonoBehaviour {
             Move(MazeDirection.West);
         }
 
-        
-	
-	}
+    }
+    void FixedUpdate()
+    {
+        if (_lives._respawn = true)
+        {
+
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.name == "MinotaurFollower")
+        {
+            alive = false;
+            Destroy(gameObject);
+        } 
+
+    }
 }
