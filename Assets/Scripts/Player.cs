@@ -29,11 +29,15 @@ public class Player : MonoBehaviour {
         if (edge is MazePassage)
         {
             SetLocation(edge.otherCell);
-            GetComponent<AudioSource>().PlayOneShot(_Footsteps, 1f);
+            audio.Stop();
+            audio.PlayOneShot(_Footsteps, 1f);
         }
         
         else
-        { GetComponent<AudioSource>().PlayOneShot(_cantMove, 1f); }    
+        {
+            audio.Stop();
+            audio.PlayOneShot(_cantMove, 1f);
+        }    
         }
 	
 	// Update is called once per frame
