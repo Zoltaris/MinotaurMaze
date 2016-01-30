@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour {
 
     public Player playerPrefab;
 	public MinotaurFollower minotaurPrefab;
+	public ExitPoint exitPrefab;
 
     private Player playerInstance;
 	private MinotaurFollower minotaurInstance;
+	private ExitPoint exitInstance;
 
     public int Lives;
     public bool alive = true;
@@ -39,6 +41,8 @@ public class GameManager : MonoBehaviour {
 		yield return StartCoroutine(mazeInstance.Generate());
         SpawnPlayer();
         SpawnMinotaur();
+		exitInstance = Instantiate(exitPrefab) as ExitPoint;
+		exitInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
         Lives = 7;
         alive = true;
         gameOver = false;
