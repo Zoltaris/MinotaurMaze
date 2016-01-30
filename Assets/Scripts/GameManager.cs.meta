@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: cae0fcacd7d8c464bb488d4784e2d893
-timeCreated: 1454183045
+timeCreated: 1454196416
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
@@ -8,6 +8,10 @@ MonoImporter:
   - mazePrefab: {instanceID: 0}
   - playerPrefab: {fileID: 11438536, guid: c80d1a81e92528d4f9362ff377f34bd5, type: 2}
   - minotaurPrefab: {fileID: 11415828, guid: 84d9ce1daa64f4cd3871500973032eca, type: 2}
+  - exitPrefab: {fileID: 11405564, guid: 9e2b58c65ed524c43995fab74eff4590, type: 2}
+  - _gameOver: {instanceID: 0}
+  - _restart: {instanceID: 0}
+  - _lives: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
