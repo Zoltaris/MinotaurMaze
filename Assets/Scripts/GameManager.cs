@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 
     public int Lives;
     public bool alive = true;
+	public bool winState = false;
     public bool gameOver = false;
     public bool restart = false;
 
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour {
 		exitInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
         Lives = 7;
         alive = true;
+		winState = false;
         gameOver = false;
         restart = false;
 
@@ -91,9 +93,6 @@ void FixedUpdate ()
     {
         playerInstance = Instantiate(playerPrefab) as Player;
         playerInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
-        
-
-
     }
 
     void SpawnMinotaur()
@@ -110,7 +109,11 @@ void FixedUpdate ()
 
     public void GameOver()
     {
-    _gameOver.text = "The Minotaur has devoured you";
+		if (winState) {
+			_gameOver.text = "Woohoo! You found the exit!";
+		} else {
+    		_gameOver.text = "The Minotaur has devoured you";
+		}
         _restart.text = "Press 'r' to Restart";
 
     }

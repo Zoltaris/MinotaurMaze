@@ -3,8 +3,6 @@ using System.Collections;
 
 public class ExitPoint : MonoBehaviour {
 
-	private MazeCell currentCell;
-
 	// Use this for initialization
 	void Start () {
 
@@ -12,7 +10,6 @@ public class ExitPoint : MonoBehaviour {
 
 	public void SetLocation (MazeCell cell)
 	{
-		currentCell = cell;
 		transform.localPosition = cell.transform.localPosition;
 	}
 }
