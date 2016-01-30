@@ -8,7 +8,9 @@ public class Player : MonoBehaviour {
     public AudioClip _cantMove;
     public AudioClip _Footsteps;
 
-    public Lives _lives;
+    public GameManager _GM;
+
+
 
     public bool alive = true;
 
@@ -67,18 +69,16 @@ public class Player : MonoBehaviour {
     }
     void FixedUpdate()
     {
-        if (_lives._respawn = true)
-        {
-
-        }
+        
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.name == "MinotaurFollower(clone)")
+        if (col.gameObject.tag == "Minotaur")
         {
-            alive = false;
+            _GM.LivesDecrease();
             Destroy(gameObject);
+           
         } 
 
     }
