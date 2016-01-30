@@ -3,7 +3,19 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+ 
+
+    public AudioClip _cantMove;
+    public AudioClip _Footsteps;
+
+    AudioSource audio;
+
     private MazeCell currentCell;
+
+    void Start ()
+    {
+        audio = GetComponent<AudioSource>();
+    }
 
     public void SetLocation (MazeCell cell)
     {
@@ -17,8 +29,12 @@ public class Player : MonoBehaviour {
         if (edge is MazePassage)
         {
             SetLocation(edge.otherCell);
+            GetComponent<AudioSource>().PlayOneShot(_Footsteps, 1f);
         }
-    }
+        
+        else
+        { GetComponent<AudioSource>().PlayOneShot(_cantMove, 1f); }    
+        }
 	
 	// Update is called once per frame
 	void Update () {
@@ -38,6 +54,8 @@ public class Player : MonoBehaviour {
         {
             Move(MazeDirection.West);
         }
+
+        
 	
 	}
 }
