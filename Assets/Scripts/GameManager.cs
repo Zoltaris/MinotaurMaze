@@ -39,10 +39,12 @@ public class GameManager : MonoBehaviour {
 		yield return StartCoroutine(mazeInstance.Generate());
         SpawnPlayer();
         SpawnMinotaur();
-        Lives = 7;
+        Lives = 1;
         alive = true;
         gameOver = false;
         restart = false;
+        _restart.text = " ";
+        _gameOver.text = " ";
 
 		
 	}
@@ -101,7 +103,7 @@ void FixedUpdate ()
     public void LivesDecrease()
     {
         Lives = Lives - 1;
-        SpawnPlayer();
+        //SpawnPlayer();
     }
 
     public void GameOver()
