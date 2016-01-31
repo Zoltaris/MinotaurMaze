@@ -85,4 +85,6 @@ public class Player : MonoBehaviour {
 			_GM.gameOver = true;
 		}
     }
+
+    
 }
