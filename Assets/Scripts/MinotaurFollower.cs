@@ -9,6 +9,7 @@ public class MinotaurFollower : MonoBehaviour {
 	AudioSource audio;
 
 	private MazeCell currentCell;
+    public Player _player;
 
 	// Use this for initialization
 	void Start () {
@@ -41,6 +42,7 @@ public class MinotaurFollower : MonoBehaviour {
         if (col.gameObject.tag == "Player")
         {
             audio.PlayOneShot(_Dead, 1f);
+            
             
 
         }
