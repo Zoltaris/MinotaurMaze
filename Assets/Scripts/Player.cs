@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
 
     public AudioClip _cantMove;
     public AudioClip _Footsteps;
+    public AudioClip _Dead;
+    public AudioClip _Escape;
 
     public GameManager _GM;
 
@@ -36,7 +38,7 @@ public class Player : MonoBehaviour {
         {
             SetLocation(edge.otherCell);
             audio.Stop();
-            audio.PlayOneShot(_Footsteps, 1f);
+            audio.PlayOneShot(_Footsteps, 0.5f);
         }
         
         else
@@ -76,13 +78,12 @@ public class Player : MonoBehaviour {
     {
         if (col.gameObject.tag == "Minotaur")
         {
-            _GM.LivesDecrease();
+            audio.PlayOneShot(_Dead, 1f);
             Destroy(gameObject);
-           
+            
         } 
-		if (col.gameObject.tag == "Finish") {
-			_GM.winState = true;
-			_GM.gameOver = true;
+		if (col.gameObject.tag == "End") {
+            audio.PlayOneShot(_Escape, 1f);
 		}
     }
 

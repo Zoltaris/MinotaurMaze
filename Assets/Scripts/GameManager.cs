@@ -31,13 +31,13 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine(BeginGame());
 	}
 	
-	private void Update () {
+	void Update () {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             RestartGame();
         }
 
-            _lives.text = "Lives Remaining: " + Lives.ToString();
+        /*    _lives.text = "Lives Remaining: " + Lives.ToString();
 
             if (Lives == 0)
             {
@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour {
             {
 
             }
+
+        Debug.Log(_lives);*/
         
 	}
 
@@ -78,10 +80,7 @@ public class GameManager : MonoBehaviour {
 
 		
 	}
-
-
-
-
+    
 	private void RestartGame () {
 		StopAllCoroutines();
 		Destroy(mazeInstance.gameObject);
@@ -111,16 +110,18 @@ public class GameManager : MonoBehaviour {
     public void LivesDecrease()
     {
         Lives = Lives - 1;
-        //_lives.text = "Lives Remaining: " + Lives.ToString();
+       // _lives.text = "Lives Remaining: " + Lives.ToString();
         if (Lives == 0)
         {
             alive = false;
             gameOver = true;
         }
         //SpawnPlayer();
+        Debug.Log(Lives);
+        Debug.Log(_lives);
     }
 
-    public void GameOver()
+    /*public void GameOver()
     {
 		if (winState) {
 			_gameOver.text = "Woohoo! You found the exit!";
@@ -128,6 +129,5 @@ public class GameManager : MonoBehaviour {
     		_gameOver.text = "The Minotaur has devoured you";
 		}
         _restart.text = "Press 'r' to Restart";
-
+        Debug.Log(winState);*/
     }
-}
