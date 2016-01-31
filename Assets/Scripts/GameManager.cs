@@ -109,8 +109,8 @@ public class GameManager : MonoBehaviour {
 	private void CheckLocation() {
 		var distance = Vector3.Distance(playerInstance.gameObject.transform.position, exitInstance.gameObject.transform.position);
 		Vector3 direction = playerInstance.gameObject.transform.position - transform.position;
-		direction = exitInstance.gameObject.transform.InverseTransformDirection(dir);
-		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		direction = exitInstance.gameObject.transform.InverseTransformDirection(direction);
+		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
 		MazeDirection exitDirection; 
 		if (angle > 315 && angle < 45) {
