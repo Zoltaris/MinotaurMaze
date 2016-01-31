@@ -14,13 +14,13 @@ public class Player : MonoBehaviour {
 
     public bool alive = true;
 
-    AudioSource audio;
+    AudioSource audioSource;
 
     private MazeCell currentCell;
 
     void Start ()
     {
-        audio = GetComponent<AudioSource>();
+		audioSource = GetComponent<AudioSource>();
     }
 
     public void SetLocation (MazeCell cell)
@@ -35,14 +35,14 @@ public class Player : MonoBehaviour {
         if (edge is MazePassage)
         {
             SetLocation(edge.otherCell);
-            audio.Stop();
-            audio.PlayOneShot(_Footsteps, 1f);
+            GetComponent<AudioSource>().Stop();
+            GetComponent<AudioSource>().PlayOneShot(_Footsteps, 1f);
         }
         
         else
         {
-            audio.Stop();
-            audio.PlayOneShot(_cantMove, 1f);
+            GetComponent<AudioSource>().Stop();
+            GetComponent<AudioSource>().PlayOneShot(_cantMove, 1f);
         }    
         }
 
@@ -80,9 +80,5 @@ public class Player : MonoBehaviour {
             Destroy(gameObject);
            
         } 
-		if (col.gameObject.tag == "Finish") {
-			_GM.winState = true;
-			_GM.gameOver = true;
-		}
     }
 }

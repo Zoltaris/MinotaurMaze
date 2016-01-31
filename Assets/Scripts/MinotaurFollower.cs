@@ -6,13 +6,13 @@ public class MinotaurFollower : MonoBehaviour {
 	public AudioClip _cantMove;
 	public AudioClip _Footsteps;
 
-	AudioSource audio;
+	AudioSource audioSource;
 
 	private MazeCell currentCell;
 
 	// Use this for initialization
 	void Start () {
-		audio = GetComponent<AudioSource>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	public void SetLocation (MazeCell cell)
