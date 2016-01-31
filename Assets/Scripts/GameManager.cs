@@ -32,9 +32,35 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	private void Update () {
-		if (Input.GetKeyDown(KeyCode.Space)) {
-			RestartGame();
-		}
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            RestartGame();
+        }
+
+            _lives.text = "Lives Remaining: " + Lives.ToString();
+
+            if (Lives == 0)
+            {
+                alive = false;
+                gameOver = true;
+            }
+
+            if (gameOver)
+            {
+                GameOver();
+                //restart = true;
+            }
+
+            if (restart)
+            {
+                RestartGame();
+            }
+
+            if (winState)
+            {
+
+            }
+        
 	}
 
 	private IEnumerator BeginGame () {
@@ -44,7 +70,7 @@ public class GameManager : MonoBehaviour {
         SpawnMinotaur();
 		exitInstance = Instantiate(exitPrefab) as ExitPoint;
 		exitInstance.SetLocation(mazeInstance.GetCell(mazeInstance.RandomCoordinates));
-        Lives = 7;
+        Lives = 1;
         alive = true;
 		winState = false;
         gameOver = false;
@@ -54,26 +80,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 
-void FixedUpdate ()
-    {
-        _lives.text = "Lives Remaining: " + Lives.ToString();
-        if (Lives == 0)
-        {
-            alive = false;
-            gameOver = true;
-        }
 
-        if (gameOver)
-        {
-            GameOver();
-            restart = true;
-        }
-
-        if (restart)
-        {
-            RestartGame();
-        }
-    }
 
 	private void RestartGame () {
 		StopAllCoroutines();
@@ -104,7 +111,13 @@ void FixedUpdate ()
     public void LivesDecrease()
     {
         Lives = Lives - 1;
-        SpawnPlayer();
+        //_lives.text = "Lives Remaining: " + Lives.ToString();
+        if (Lives == 0)
+        {
+            alive = false;
+            gameOver = true;
+        }
+        //SpawnPlayer();
     }
 
     public void GameOver()
