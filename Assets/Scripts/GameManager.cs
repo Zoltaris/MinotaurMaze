@@ -74,7 +74,11 @@ public class GameManager : MonoBehaviour {
             }
 
         Debug.Log(_lives);*/
-        
+		Debug.Log("gameOver: " + gameOver + ", winState: " + winState);
+		if (gameOver && winState)
+		{
+			Debug.Log("Woohoo! You escaped!");
+		}
 	}
 
 	private IEnumerator BeginGame () {

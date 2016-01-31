@@ -9,12 +9,11 @@ public class Player : MonoBehaviour {
     public AudioClip _Footsteps;
     public AudioClip _Dead;
     public AudioClip _Escape;
+	public AudioClip _Reset;
 
     public GameManager _GM;
 
-
-
-    public bool alive = true;
+    public bool inputActive = true;
 
     AudioSource audio;
 
@@ -23,6 +22,7 @@ public class Player : MonoBehaviour {
     void Start ()
     {
         audio = GetComponent<AudioSource>();
+		inputActive = true;
     }
 
     public void SetLocation (MazeCell cell)
@@ -51,23 +51,25 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            Move(MazeDirection.North);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Move(MazeDirection.East);
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            Move(MazeDirection.South);
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Move(MazeDirection.West);
-        }
-
+		if(inputActive)
+		{
+	        if (Input.GetKeyDown(KeyCode.UpArrow))
+	        {
+	            Move(MazeDirection.North);
+	        }
+	        else if (Input.GetKeyDown(KeyCode.RightArrow))
+	        {
+	            Move(MazeDirection.East);
+	        }
+	        else if (Input.GetKeyDown(KeyCode.DownArrow))
+	        {
+	            Move(MazeDirection.South);
+	        }
+	        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+	        {
+	            Move(MazeDirection.West);
+	        }
+		}
     }
     void FixedUpdate()
     {
@@ -79,17 +81,19 @@ public class Player : MonoBehaviour {
         if (col.gameObject.tag == "Minotaur")
         {
             audio.PlayOneShot(_Dead, 1f);
-            Destroy(gameObject);
+			inputActive = false;
 			StartCoroutine(Exit());
-        } 
+		} 
 		if (col.gameObject.tag == "End") {
             audio.PlayOneShot(_Escape, 1f);
+			inputActive = false;
+			StartCoroutine(Exit());
 		}
     }
 
 	IEnumerator Exit() {
 		Debug.Log(Time.time);
-		yield return new WaitForSeconds(5);
-		Application.Quit();
+		yield return new WaitForSeconds(3);
+		audio.PlayOneShot(_Reset, 1f);
 	}
 }

@@ -7,6 +7,7 @@ public class MinotaurFollower : MonoBehaviour {
     public AudioClip _Dead;
 
 	AudioSource audio;
+	bool inputActive = true;
 
 	private MazeCell currentCell;
     public Player _player;
@@ -14,6 +15,7 @@ public class MinotaurFollower : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		audio = GetComponent<AudioSource>();
+		inputActive = true;
 	}
 
 	public void SetLocation (MazeCell cell)
@@ -42,30 +44,31 @@ public class MinotaurFollower : MonoBehaviour {
         if (col.gameObject.tag == "Player")
         {
             audio.PlayOneShot(_Dead, 1f);
-            
-            
-
+			inputActive = false;
         }
-        
     }
 
     // Update is called once per frame
     void Update () {
-		if (Input.GetKeyDown(KeyCode.UpArrow))
+
+		if(inputActive)
 		{
-			Move(MazeDirection.North);
-		}
-		else if (Input.GetKeyDown(KeyCode.RightArrow))
-		{
-			Move(MazeDirection.East);
-		}
-		else if (Input.GetKeyDown(KeyCode.DownArrow))
-		{
-			Move(MazeDirection.South);
-		}
-		else if (Input.GetKeyDown(KeyCode.LeftArrow))
-		{
-			Move(MazeDirection.West);
+			if (Input.GetKeyDown(KeyCode.UpArrow))
+			{
+				Move(MazeDirection.North);
+			}
+			else if (Input.GetKeyDown(KeyCode.RightArrow))
+			{
+				Move(MazeDirection.East);
+			}
+			else if (Input.GetKeyDown(KeyCode.DownArrow))
+			{
+				Move(MazeDirection.South);
+			}
+			else if (Input.GetKeyDown(KeyCode.LeftArrow))
+			{
+				Move(MazeDirection.West);
+			}
 		}
 	}
 }
