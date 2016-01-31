@@ -80,12 +80,16 @@ public class Player : MonoBehaviour {
         {
             audio.PlayOneShot(_Dead, 1f);
             Destroy(gameObject);
-            
+			StartCoroutine(Exit());
         } 
 		if (col.gameObject.tag == "End") {
             audio.PlayOneShot(_Escape, 1f);
 		}
     }
 
-    
+	IEnumerator Exit() {
+		Debug.Log(Time.time);
+		yield return new WaitForSeconds(5);
+		Application.Quit();
+	}
 }

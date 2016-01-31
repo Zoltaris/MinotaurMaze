@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour {
 
 	public Maze mazePrefab;
 
+	public AudioClip _Introduction;
 	public AudioClip _NorthWest;
 	public AudioClip _NorthEast;
 	public AudioClip _SouthEast;
@@ -33,8 +34,8 @@ public class GameManager : MonoBehaviour {
 	AudioSource audio;
 
 	private void Start () {
-		StartCoroutine(BeginGame());
 		audio = GetComponent<AudioSource>();
+		StartCoroutine(BeginGame());
 	}
 	
 	void Update () {
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private IEnumerator BeginGame () {
+		audio.PlayOneShot(_Introduction, 1f);
 		mazeInstance = Instantiate(mazePrefab) as Maze;
 		yield return StartCoroutine(mazeInstance.Generate());
         SpawnPlayer();
