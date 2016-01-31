@@ -105,6 +105,10 @@ public class GameManager : MonoBehaviour {
 		{
 			Destroy(minotaurInstance.gameObject);
 		}
+		if (exitInstance != null)
+		{
+			Destroy(exitInstance.gameObject);
+		}
         StartCoroutine(BeginGame());
 	}
 
