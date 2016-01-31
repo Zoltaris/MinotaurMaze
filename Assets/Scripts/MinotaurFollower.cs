@@ -29,6 +29,10 @@ public class MinotaurFollower : MonoBehaviour {
 			SetLocation(edge.otherCell);
 			
 		}
+		else
+		{
+			Move(MazeDirections.RandomValue);
+		}
 	   
 	}
 
