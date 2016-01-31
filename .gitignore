@@ -4,3 +4,6 @@ Assets/Prefabs/Minotaur.prefab
 Assets/Prefabs/Minotaur.prefab.meta
 Temp/
 Assembly-CSharp.csproj
+obj/Debug/Assembly-CSharp.csproj.FilesWrittenAbsolute.txt
+obj/Debug/Assembly-CSharp.dll
+obj/Debug/Assembly-CSharp.dll.mdb
