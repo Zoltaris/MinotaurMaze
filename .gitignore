@@ -7,3 +7,7 @@ Assembly-CSharp.csproj
 obj/Debug/Assembly-CSharp.csproj.FilesWrittenAbsolute.txt
 obj/Debug/Assembly-CSharp.dll
 obj/Debug/Assembly-CSharp.dll.mdb
+Assets/Sounds/bgm original_data/
+*.aup
+*.meta
+*.au
