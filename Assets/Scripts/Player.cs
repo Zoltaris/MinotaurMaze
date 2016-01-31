@@ -5,7 +5,7 @@ public class Player : MonoBehaviour {
 
  
 
-    public AudioClip _cantMove;
+    public AudioClip[] _cantMove;
     public AudioClip _Footsteps;
     public AudioClip _Dead;
     public AudioClip _Escape;
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour {
         else
         {
             audio.Stop();
-            audio.PlayOneShot(_cantMove, 1f);
+			audio.PlayOneShot(_cantMove[Random.Range(0, _cantMove.Length)], 1f);
         }    
         }
 

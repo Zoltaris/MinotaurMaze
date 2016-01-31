@@ -5,10 +5,10 @@ public class GameManager : MonoBehaviour {
 
 	public Maze mazePrefab;
 
-	public AudioClip _North;
-	public AudioClip _East;
-	public AudioClip _South;
-	public AudioClip _West;
+	public AudioClip _NorthWest;
+	public AudioClip _NorthEast;
+	public AudioClip _SouthEast;
+	public AudioClip _SouthWest;
 
     public Player playerPrefab;
 	public MinotaurFollower minotaurPrefab;
@@ -107,24 +107,22 @@ public class GameManager : MonoBehaviour {
 	}
 
 	private void CheckLocation() {
-		var distance = Vector3.Distance(playerInstance.gameObject.transform.position, exitInstance.gameObject.transform.position);
-		Vector3 direction = playerInstance.gameObject.transform.position - transform.position;
-		direction = exitInstance.gameObject.transform.InverseTransformDirection(direction);
-		float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+		Debug.Log("Checking direction");		
+		// var distance = Vector3.Distance(playerInstance.gameObject.transform.position, exitInstance.gameObject.transform.position);
+		Vector3 direction = playerInstance.gameObject.transform.position - exitInstance.gameObject.transform.position;
 
-		MazeDirection exitDirection; 
-		if (angle > 315 && angle < 45) {
-			exitDirection = MazeDirection.North;
-			audio.PlayOneShot(_North, 1f);
-		} else if (angle > 46 && angle < 135) {
-			exitDirection = MazeDirection.East;
-			audio.PlayOneShot(_East, 1f);
-		} else if (angle > 136 && angle < 225) {
-			exitDirection = MazeDirection.South;
-			audio.PlayOneShot(_South, 1f);		
-		} else if (angle > 226 && angle < 315) {
-			exitDirection = MazeDirection.West;
-			audio.PlayOneShot(_West, 1f);
+		if (direction.x < 0 && direction.z < 0) {
+			Debug.Log("To the North East!");
+			audio.PlayOneShot(_NorthEast, 1f);
+		} else if (direction.x < 0 && direction.z > 0) {
+			Debug.Log("To the South East!");
+			audio.PlayOneShot(_SouthEast, 1f);
+		} else if (direction.x > 0 && direction.z < 0) {
+			Debug.Log("To the North West!");
+			audio.PlayOneShot(_NorthWest, 1f);		
+		} else if (direction.x > 0 && direction.z > 0) {
+			Debug.Log("To the South West!");
+			audio.PlayOneShot(_SouthWest, 1f);
 		}
 	}
 
